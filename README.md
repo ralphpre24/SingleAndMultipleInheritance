@@ -1,0 +1,2 @@
+# SingleAndMultipleInheritance
+Intelligent Systems
