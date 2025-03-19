@@ -1,99 +1,128 @@
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix cat: <http://example.org/cat-ontology#> .
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+         xmlns:owl="http://www.w3.org/2002/07/owl#" 
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#" 
+         xmlns:cat="http://example.org/cat-ontology#">
 
-<http://example.org/cat-ontology> rdf:type owl:Ontology .
+  <owl:Ontology rdf:about="http://example.org/cat-ontology"/>
 
-# Classes
-cat:Cat rdf:type owl:Class .
+  <!-- Classes -->
+  <owl:Class rdf:about="http://example.org/cat-ontology#Cat"/>
+  <owl:Class rdf:about="http://example.org/cat-ontology#DomesticCat">
+    <rdfs:subClassOf rdf:resource="http://example.org/cat-ontology#Cat"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://example.org/cat-ontology#StrayCat">
+    <rdfs:subClassOf rdf:resource="http://example.org/cat-ontology#DomesticCat"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://example.org/cat-ontology#FeralCat">
+    <rdfs:subClassOf rdf:resource="http://example.org/cat-ontology#DomesticCat"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://example.org/cat-ontology#FreeRoamingCat">
+    <rdfs:subClassOf rdf:resource="http://example.org/cat-ontology#DomesticCat"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://example.org/cat-ontology#Puspin">
+    <rdfs:subClassOf rdf:resource="http://example.org/cat-ontology#DomesticCat"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://example.org/cat-ontology#Coat"/>
+  <owl:Class rdf:about="http://example.org/cat-ontology#CoatColor">
+    <rdfs:subClassOf rdf:resource="http://example.org/cat-ontology#Coat"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://example.org/cat-ontology#CoatLength">
+    <rdfs:subClassOf rdf:resource="http://example.org/cat-ontology#Coat"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://example.org/cat-ontology#Behavior"/>
 
-cat:DomesticCat rdf:type owl:Class ;
-    rdfs:subClassOf cat:Cat .
+  <!-- Instances of CoatColor -->
+  <cat:CoatColor rdf:about="http://example.org/cat-ontology#Calico"/>
+  <cat:CoatColor rdf:about="http://example.org/cat-ontology#Tortoiseshell"/>
+  <cat:CoatColor rdf:about="http://example.org/cat-ontology#Tuxedo"/>
+  <cat:CoatColor rdf:about="http://example.org/cat-ontology#Black"/>
+  <cat:CoatColor rdf:about="http://example.org/cat-ontology#White"/>
+  <cat:CoatColor rdf:about="http://example.org/cat-ontology#Gray"/>
+  <cat:CoatColor rdf:about="http://example.org/cat-ontology#Tabby"/>
+  <cat:CoatColor rdf:about="http://example.org/cat-ontology#Orange"/>
+  <cat:CoatColor rdf:about="http://example.org/cat-ontology#Various"/>
 
-cat:StrayCat rdf:type owl:Class ;
-    rdfs:subClassOf cat:DomesticCat .
+  <!-- Instances of CoatLength -->
+  <cat:CoatLength rdf:about="http://example.org/cat-ontology#Shorthair"/>
+  <cat:CoatLength rdf:about="http://example.org/cat-ontology#Longhair"/>
 
-cat:FeralCat rdf:type owl:Class ;
-    rdfs:subClassOf cat:DomesticCat .
+  <!-- Instances of Behavior -->
+  <cat:Behavior rdf:about="http://example.org/cat-ontology#ApproachesHumans"/>
+  <cat:Behavior rdf:about="http://example.org/cat-ontology#MayMeow"/>
+  <cat:Behavior rdf:about="http://example.org/cat-ontology#MovesLikeHouseCat"/>
+  <cat:Behavior rdf:about="http://example.org/cat-ontology#OftenAlone"/>
+  <cat:Behavior rdf:about="http://example.org/cat-ontology#AvoidsHumans"/>
+  <cat:Behavior rdf:about="http://example.org/cat-ontology#LessLikelyToMeow"/>
+  <cat:Behavior rdf:about="http://example.org/cat-ontology#CrawlsOrCrouches"/>
+  <cat:Behavior rdf:about="http://example.org/cat-ontology#OftenInColonies"/>
+  <cat:Behavior rdf:about="http://example.org/cat-ontology#VariedBehavior"/>
 
-cat:FreeRoamingCat rdf:type owl:Class ;
-    rdfs:subClassOf cat:DomesticCat .
+  <!-- Object Properties -->
+  <owl:ObjectProperty rdf:about="http://example.org/cat-ontology#hasCoatColor">
+    <rdfs:domain rdf:resource="http://example.org/cat-ontology#Cat"/>
+    <rdfs:range rdf:resource="http://example.org/cat-ontology#CoatColor"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://example.org/cat-ontology#hasCoatLength">
+    <rdfs:domain rdf:resource="http://example.org/cat-ontology#Cat"/>
+    <rdfs:range rdf:resource="http://example.org/cat-ontology#CoatLength"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://example.org/cat-ontology#exhibitsBehavior">
+    <rdfs:domain rdf:resource="http://example.org/cat-ontology#Cat"/>
+    <rdfs:range rdf:resource="http://example.org/cat-ontology#Behavior"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://example.org/cat-ontology#isType">
+    <rdfs:domain rdf:resource="http://example.org/cat-ontology#Cat"/>
+    <rdfs:range rdf:resource="http://example.org/cat-ontology#Cat"/>
+  </owl:ObjectProperty>
 
-cat:Puspin rdf:type owl:Class ;
-    rdfs:subClassOf cat:DomesticCat .
+  <!-- Data Properties -->
+  <owl:DatatypeProperty rdf:about="http://example.org/cat-ontology#hasPuspinInfo">
+    <rdfs:domain rdf:resource="http://example.org/cat-ontology#Puspin"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
 
-cat:Coat rdf:type owl:Class .
+  <!-- Example Instances -->
+  <cat:StrayCat rdf:about="http://example.org/cat-ontology#ExampleStray">
+    <cat:hasCoatColor rdf:resource="http://example.org/cat-ontology#Calico"/>
+    <cat:hasCoatLength rdf:resource="http://example.org/cat-ontology#Shorthair"/>
+    <cat:exhibitsBehavior rdf:resource="http://example.org/cat-ontology#ApproachesHumans"/>
+    <cat:exhibitsBehavior rdf:resource="http://example.org/cat-ontology#MayMeow"/>
+    <cat:exhibitsBehavior rdf:resource="http://example.org/cat-ontology#OftenAlone"/>
+  </cat:StrayCat>
 
-cat:CoatColor rdf:type owl:Class ;
-    rdfs:subClassOf cat:Coat .
+  <cat:FeralCat rdf:about="http://example.org/cat-ontology#ExampleFeral">
+    <cat:hasCoatColor rdf:resource="http://example.org/cat-ontology#Black"/>
+    <cat:hasCoatLength rdf:resource="http://example.org/cat-ontology#Longhair"/>
+    <cat:exhibitsBehavior rdf:resource="http://example.org/cat-ontology#AvoidsHumans"/>
+    <cat:exhibitsBehavior rdf:resource="http://example.org/cat-ontology#CrawlsOrCrouches"/>
+    <cat:exhibitsBehavior rdf:resource="http://example.org/cat-ontology#OftenInColonies"/>
+  </cat:FeralCat>
 
-cat:CoatLength rdf:type owl:Class ;
-    rdfs:subClassOf cat:Coat .
+  <cat:Puspin rdf:about="http://example.org/cat-ontology#ExamplePuspin">
+    <cat:hasCoatColor rdf:resource="http://example.org/cat-ontology#Tabby"/>
+    <cat:hasCoatLength rdf:resource="http://example.org/cat-ontology#Shorthair"/>
+    <cat:hasPuspinInfo>Puspin (Pusang Pinoy): Common house cat in the Philippines.</cat:hasPuspinInfo>
+  </cat:Puspin>
 
-cat:Behavior rdf:type owl:Class .
+  <!-- Cat type to behavior relations -->
+  <cat:StrayCat rdf:about="http://example.org/cat-ontology#StrayCat">
+    <cat:exhibitsBehavior rdf:resource="http://example.org/cat-ontology#ApproachesHumans"/>
+    <cat:exhibitsBehavior rdf:resource="http://example.org/cat-ontology#MayMeow"/>
+    <cat:exhibitsBehavior rdf:resource="http://example.org/cat-ontology#MovesLikeHouseCat"/>
+    <cat:exhibitsBehavior rdf:resource="http://example.org/cat-ontology#OftenAlone"/>
+  </cat:StrayCat>
 
-# Instances of CoatColor
-cat:Calico rdf:type cat:CoatColor .
-cat:Tortoiseshell rdf:type cat:CoatColor .
-cat:Tuxedo rdf:type cat:CoatColor .
-cat:Black rdf:type cat:CoatColor .
-cat:White rdf:type cat:CoatColor .
-cat:Gray rdf:type cat:CoatColor .
-cat:Tabby rdf:type cat:CoatColor .
-cat:Orange rdf:type cat:CoatColor .
-cat:VariousColors rdf:type cat:CoatColor .
+  <cat:FeralCat rdf:about="http://example.org/cat-ontology#FeralCat">
+    <cat:exhibitsBehavior rdf:resource="http://example.org/cat-ontology#AvoidsHumans"/>
+    <cat:exhibitsBehavior rdf:resource="http://example.org/cat-ontology#LessLikelyToMeow"/>
+    <cat:exhibitsBehavior rdf:resource="http://example.org/cat-ontology#CrawlsOrCrouches"/>
+    <cat:exhibitsBehavior rdf:resource="http://example.org/cat-ontology#OftenInColonies"/>
+  </cat:FeralCat>
 
-# Instances of CoatLength
-cat:Shorthair rdf:type cat:CoatLength .
-cat:Longhair rdf:type cat:CoatLength .
+  <cat:FreeRoamingCat rdf:about="http://example.org/cat-ontology#FreeRoamingCat">
+    <cat:exhibitsBehavior rdf:resource="http://example.org/cat-ontology#VariedBehavior"/>
+  </cat:FreeRoamingCat>
 
-# Instances of Behavior
-cat:ApproachesHumans rdf:type cat:Behavior .
-cat:MayMeow rdf:type cat:Behavior .
-cat:MovesLikeHouseCat rdf:type cat:Behavior .
-cat:OftenAlone rdf:type cat:Behavior .
-cat:AvoidsHumans rdf:type cat:Behavior .
-cat:LessLikelyToMeow rdf:type cat:Behavior .
-cat:CrawlsOrCrouches rdf:type cat:Behavior .
-cat:OftenInColonies rdf:type cat:Behavior .
-cat:VariedBehavior rdf:type cat:Behavior .
-
-# Object Properties
-cat:hasCoatColor rdf:type owl:ObjectProperty ;
-    rdfs:domain cat:Cat ;
-    rdfs:range cat:CoatColor .
-
-cat:hasCoatLength rdf:type owl:ObjectProperty ;
-    rdfs:domain cat:Cat ;
-    rdfs:range cat:CoatLength .
-
-cat:exhibitsBehavior rdf:type owl:ObjectProperty ;
-    rdfs:domain cat:Cat ;
-    rdfs:range cat:Behavior .
-
-cat:isType rdf:type owl:ObjectProperty ;
-    rdfs:domain cat:Cat ;
-    rdfs:range cat:Cat .
-
-# Data Properties
-cat:hasPuspinInfo rdf:type owl:DatatypeProperty ;
-    rdfs:domain cat:Puspin ;
-    rdfs:range xsd:string .
-
-# Example Instances
-cat:ExampleStray rdf:type cat:StrayCat ;
-    cat:hasCoatColor cat:Calico ;
-    cat:hasCoatLength cat:Shorthair ;
-    cat:exhibitsBehavior cat:ApproachesHumans , cat:MayMeow , cat:OftenAlone .
-
-cat:ExampleFeral rdf:type cat:FeralCat ;
-    cat:hasCoatColor cat:Black ;
-    cat:hasCoatLength cat:Longhair ;
-    cat:exhibitsBehavior cat:AvoidsHumans , cat:CrawlsOrCrouches , cat:OftenInColonies .
-
-cat:ExamplePuspin rdf:type cat:Puspin;
-    cat:hasCoatColor cat:Tabby;
-    cat:hasCoatLength cat:Shorthair;
-    cat:hasPuspinInfo "Common house cat in the Philippines.".
+</rdf:RDF>
